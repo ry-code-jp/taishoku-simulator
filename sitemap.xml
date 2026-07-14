@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://taishoku-sim.com/articles/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://taishoku-sim.com/articles/shitsugyou-teate-moraikata.html</loc>
     <lastmod>2026-07-14</lastmod>
     <priority>0.8</priority>

@@ -15,6 +15,8 @@
 <meta property="og:description" content="失業手当・住民税・国保・年金・貯金の推移をまとめて無料シミュレーション。2026年最新制度対応。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://taishoku-sim.com/">
+<meta property="og:image" content="https://taishoku-sim.com/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -285,7 +287,29 @@
     font-size:11px;line-height:18px;text-align:center;font-weight:700;
   }
 
+  /* ===== シェア ===== */
+  .share-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid var(--grid);}
+  .share-row .s-label{font-size:12.5px;font-weight:700;color:var(--ink-2);}
+  .share-btn{
+    display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;
+    font-size:12.5px;font-weight:700;text-decoration:none;cursor:pointer;border:none;font-family:inherit;
+    transition:filter .15s, transform .12s;
+  }
+  .share-btn:hover{filter:brightness(1.08);transform:translateY(-1px);}
+  .share-btn.x{background:#0f1419;color:#fff;}
+  .share-btn.line{background:#06c755;color:#fff;}
+  .share-btn.copy{background:var(--accent-soft);color:var(--accent-strong);border:1px solid var(--accent-line);}
+
+  /* ===== 早見表 ===== */
+  table.quick{width:100%;border-collapse:collapse;margin:10px 0 4px;font-size:13.5px;text-align:center;}
+  table.quick th{background:var(--accent-soft);color:var(--navy);font-weight:700;padding:8px 6px;border:1px solid var(--accent-line);font-size:12.5px;}
+  table.quick td{padding:8px 6px;border:1px solid var(--grid);color:var(--ink-2);font-variant-numeric:tabular-nums;}
+  table.quick td:first-child{font-weight:700;color:var(--ink);background:#fafbfd;}
+  .quick-note{font-size:11.5px;color:var(--muted);margin-top:8px;}
+  .quick-wrap{overflow-x:auto;}
+
   /* ===== コラム ===== */
+  .article-more{display:block;text-align:center;font-size:13px;font-weight:700;margin-top:12px;text-decoration:none;}
   .article-list a{
     display:block;padding:15px 17px;border:1px solid var(--grid);border-radius:12px;
     margin:10px 0;text-decoration:none;background:#fbfcfe;
@@ -391,7 +415,7 @@
 
   <section class="card">
     <h2><span class="num">1</span>あなたの状況を入力</h2>
-    <p class="sub">すべて概算でOK。あとから何度でも変えられます。</p>
+    <p class="sub">すべて概算でOK。あとから何度でも変えられます。<span style="display:block;margin-top:2px;">最終更新：2026年7月14日（令和7年8月改定の基本手当日額・令和8年度の国民年金保険料に対応）</span></p>
     <form id="form" onsubmit="return false;">
       <div class="grid">
         <div class="field">
@@ -457,6 +481,12 @@
         <div class="tooltip" id="tooltip"></div>
       </div>
       <p class="chart-legend-note">毎月末の貯金残高の推移（24ヶ月）。<span style="color:var(--critical);font-weight:600;">■赤</span>はマイナス（貯金が尽きた状態）。失業手当の入金と、生活費・税・保険料の支払いを月ごとに反映しています。</p>
+      <div class="share-row">
+        <span class="s-label">このツールをシェア：</span>
+        <a class="share-btn x" href="https://twitter.com/intent/tweet?text=%E9%80%80%E8%81%B7%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC%EF%BD%9C%E5%A4%B1%E6%A5%AD%E6%89%8B%E5%BD%93%E3%83%BB%E4%BD%8F%E6%B0%91%E7%A8%8E%E3%83%BB%E5%9B%BD%E4%BF%9D%E3%83%BB%E8%B2%AF%E9%87%91%E3%81%AE%E6%8E%A8%E7%A7%BB%E3%82%921%E5%88%86%E3%81%A7%E8%A6%8B%E3%81%88%E3%82%8B%E5%8C%96&amp;url=https%3A%2F%2Ftaishoku-sim.com%2F" target="_blank" rel="noopener">𝕏 ポスト</a>
+        <a class="share-btn line" href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Ftaishoku-sim.com%2F" target="_blank" rel="noopener">LINEで送る</a>
+        <button class="share-btn copy" id="copyUrlBtn">🔗 URLをコピー</button>
+      </div>
     </section>
 
     <section class="card">
@@ -495,6 +525,31 @@
   </div>
 
   <section class="card">
+    <h2>失業手当の給付日数 早見表</h2>
+    <p class="sub">もらえる日数は「退職理由 × 年齢 × 雇用保険の加入期間」で決まります（2026年7月時点）。</p>
+    <h3 style="font-size:14px;color:var(--navy);margin:6px 0 4px;">自己都合退職の場合（全年齢共通）</h3>
+    <div class="quick-wrap">
+      <table class="quick">
+        <tr><th>加入期間</th><th>1年未満</th><th>1年〜10年未満</th><th>10年〜20年未満</th><th>20年以上</th></tr>
+        <tr><td>給付日数</td><td>対象外※</td><td>90日</td><td>120日</td><td>150日</td></tr>
+      </table>
+    </div>
+    <p class="quick-note">※自己都合退職は、離職前2年間に被保険者期間が通算12ヶ月以上必要です。</p>
+    <h3 style="font-size:14px;color:var(--navy);margin:18px 0 4px;">会社都合退職の場合（倒産・解雇など）</h3>
+    <div class="quick-wrap">
+      <table class="quick">
+        <tr><th>年齢＼加入期間</th><th>6ヶ月〜1年</th><th>1〜5年</th><th>5〜10年</th><th>10〜20年</th><th>20年以上</th></tr>
+        <tr><td>30歳未満</td><td>90日</td><td>90日</td><td>120日</td><td>180日</td><td>—</td></tr>
+        <tr><td>30〜34歳</td><td>90日</td><td>120日</td><td>180日</td><td>210日</td><td>240日</td></tr>
+        <tr><td>35〜44歳</td><td>90日</td><td>150日</td><td>180日</td><td>240日</td><td>270日</td></tr>
+        <tr><td>45〜59歳</td><td>90日</td><td>180日</td><td>240日</td><td>270日</td><td>330日</td></tr>
+        <tr><td>60〜64歳</td><td>90日</td><td>150日</td><td>180日</td><td>210日</td><td>240日</td></tr>
+      </table>
+    </div>
+    <p class="quick-note">日数だけでなく「1日あたりいくらか」「いつから振り込まれるか」は上のシミュレーターで計算できます。</p>
+  </section>
+
+  <section class="card">
     <h2>退職とお金のコラム</h2>
     <p class="sub">シミュレーションの前後に読んでおきたい、退職のお金の基礎知識です。</p>
     <div class="article-list">
@@ -514,6 +569,7 @@
         <span class="a-more">続きを読む →</span>
       </a>
     </div>
+    <a class="article-more" href="./articles/">コラム一覧を見る →</a>
   </section>
 
   <section class="card faq">
@@ -563,7 +619,7 @@
     </div>
     <p>退職後のお金の不安を、数字に変える。</p>
     <p>制度データ：厚生労働省（令和7年8月1日改定 基本手当日額）／日本年金機構（令和8年度 国民年金保険料）ほか</p>
-    <p><a href="./privacy.html" style="color:#c9d5e8;">プライバシーポリシー・免責事項・運営者情報</a> ｜ <a href="https://forms.gle/fLUeUgyRsNNLhdzbA" target="_blank" rel="noopener" style="color:#c9d5e8;">お問い合わせ</a></p>
+    <p><a href="./articles/" style="color:#c9d5e8;">コラム一覧</a> ｜ <a href="./privacy.html" style="color:#c9d5e8;">プライバシーポリシー・免責事項・運営者情報</a> ｜ <a href="https://forms.gle/fLUeUgyRsNNLhdzbA" target="_blank" rel="noopener" style="color:#c9d5e8;">お問い合わせ</a></p>
     <p>最終更新：2026年7月14日</p>
   </div>
 </footer>
@@ -935,6 +991,12 @@ document.querySelectorAll("#form input[type=number], #form select").forEach(el =
 $("calcBtn").addEventListener("click", () => {
   render();
   $("results").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+$("copyUrlBtn").addEventListener("click", () => {
+  navigator.clipboard.writeText("https://taishoku-sim.com/").then(() => {
+    $("copyUrlBtn").textContent = "✓ コピーしました";
+    setTimeout(() => { $("copyUrlBtn").textContent = "🔗 URLをコピー"; }, 1800);
+  });
 });
 </script>
 </body>
