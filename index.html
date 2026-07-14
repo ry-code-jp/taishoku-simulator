@@ -78,7 +78,7 @@
     -webkit-font-smoothing:antialiased;
   }
   a{color:var(--accent);}
-  .wrap{max-width:780px;margin:0 auto;padding:0 18px;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 18px;}
 
   /* ===== ヘッダー ===== */
   header.site{
@@ -208,6 +208,7 @@
   .hero-figure .note.mid{color:var(--ink-2);background:#f1f3f7;border:1px solid var(--grid);}
 
   .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+  @media(min-width:720px){.stat-grid{grid-template-columns:1fr 1fr 1fr;}}
   .stat{
     border:1px solid var(--grid);border-left:3px solid var(--accent);
     border-radius:10px;padding:12px 14px;background:#fbfcfe;
@@ -833,8 +834,8 @@ window.addEventListener("resize", () => {
 function drawChart(r) {
   const boxW = $("chartBox").clientWidth || 720;
   const mobile = boxW < 560;
-  const W = mobile ? Math.max(320, Math.round(boxW)) : 720;
-  const H = mobile ? 264 : 300;
+  const W = mobile ? Math.max(320, Math.round(boxW)) : Math.min(Math.max(Math.round(boxW), 560), 1000);
+  const H = mobile ? 264 : 310;
   const padL = mobile ? 48 : 64, padR = mobile ? 18 : 12, padT = 18, padB = mobile ? 30 : 34;
   const fs = mobile ? 11.5 : 13;          // 軸ラベルの文字サイズ
   const labelEvery = mobile ? 6 : 3;      // X軸ラベルの間隔（ヶ月）
