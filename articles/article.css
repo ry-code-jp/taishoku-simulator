@@ -1,0 +1,133 @@
+/* 記事ページ共通スタイル */
+:root{
+  --page:#f4f6fa;
+  --surface:#ffffff;
+  --ink:#1b2433;
+  --ink-2:#4a5568;
+  --muted:#8a94a6;
+  --grid:#e5e9f0;
+  --baseline:#c6cedb;
+  --border:rgba(27,36,51,0.08);
+  --navy:#16233a;
+  --accent:#1c5cab;
+  --accent-strong:#174a8c;
+  --accent-soft:#ecf3fc;
+  --accent-line:#cfdff3;
+  --good:#0f7b33;
+  --good-soft:#eef7f0;
+  --good-line:#cde5d3;
+  --warning-bg:#fdf7e7;
+  --warning-border:#ecdcae;
+  --warning-ink:#6b5310;
+  --shadow-card:0 1px 2px rgba(22,35,58,.05), 0 10px 30px -12px rgba(22,35,58,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI",sans-serif;
+  background:var(--page);color:var(--ink);line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);}
+.wrap{max-width:780px;margin:0 auto;padding:0 18px;}
+
+header.site{background:var(--surface);border-bottom:1px solid var(--grid);position:relative;}
+header.site::before{content:"";display:block;height:3px;
+  background:linear-gradient(90deg,var(--accent-strong),#2a78d6 55%,#79aae6);}
+header.site .wrap{display:flex;align-items:center;gap:12px;padding-top:13px;padding-bottom:13px;}
+.logo-mark{flex:none;width:36px;height:36px;}
+.logo-text .logo{font-weight:700;font-size:17.5px;color:var(--navy);line-height:1.3;}
+.logo-text .logo a{color:inherit;text-decoration:none;}
+.logo-text .logo-sub{font-size:11.5px;color:var(--muted);}
+
+.breadcrumb{font-size:12px;color:var(--muted);margin:18px 0 0;}
+.breadcrumb a{color:var(--muted);}
+
+article.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:34px 32px;margin:14px 0 26px;box-shadow:var(--shadow-card);
+}
+@media(max-width:560px){article.card{padding:26px 18px;}}
+
+article h1{font-size:23px;color:var(--navy);line-height:1.55;margin-bottom:10px;}
+.meta{font-size:12px;color:var(--muted);margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--grid);}
+article .lead{font-size:14.5px;color:var(--ink-2);}
+article h2{
+  font-size:18px;color:var(--navy);margin:36px 0 12px;
+  padding:10px 14px;background:var(--accent-soft);border-left:4px solid var(--accent);
+  border-radius:0 8px 8px 0;line-height:1.5;
+}
+article h3{font-size:15.5px;color:var(--navy);margin:24px 0 8px;padding-left:11px;border-left:3px solid var(--baseline);}
+article p{font-size:14px;color:var(--ink-2);margin:10px 0;}
+article strong{color:var(--ink);}
+article ul,article ol{margin:10px 0 10px 24px;}
+article li{font-size:14px;color:var(--ink-2);margin:6px 0;}
+
+/* 目次 */
+.toc{background:#f7f9fc;border:1px solid var(--grid);border-radius:12px;padding:16px 20px;margin:20px 0;}
+.toc .toc-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.toc ol{margin:0 0 0 22px;}
+.toc li{font-size:13.5px;margin:4px 0;}
+
+/* ステップカード */
+.step{display:flex;gap:14px;margin:16px 0;padding:16px;border:1px solid var(--grid);border-radius:12px;background:#fbfcfe;}
+.step .s-num{
+  flex:none;width:34px;height:34px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-strong));color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;
+  box-shadow:0 2px 6px rgba(28,92,171,.3);
+}
+.step .s-body{flex:1;}
+.step .s-title{font-weight:700;font-size:14.5px;color:var(--navy);margin-bottom:4px;}
+.step p{margin:4px 0;font-size:13.5px;}
+
+/* ボックス */
+.point,.caution{border-radius:10px;padding:13px 16px;font-size:13.5px;margin:14px 0;}
+.point{background:var(--good-soft);border:1px solid var(--good-line);color:#1d4d28;}
+.point::before{content:"ポイント";display:block;font-weight:700;font-size:12px;color:var(--good);margin-bottom:3px;}
+.caution{background:var(--warning-bg);border:1px solid var(--warning-border);color:var(--warning-ink);}
+.caution::before{content:"注意";display:block;font-weight:700;font-size:12px;margin-bottom:3px;}
+
+/* チェックリスト */
+ul.checklist{margin-left:0;}
+ul.checklist li{
+  list-style:none;padding:10px 12px 10px 38px;position:relative;margin:8px 0;
+  border:1px solid var(--grid);border-radius:10px;background:#fbfcfe;
+}
+ul.checklist li::before{
+  content:"✓";position:absolute;left:11px;top:10px;
+  width:19px;height:19px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line);
+  font-size:11px;line-height:18px;text-align:center;font-weight:700;
+}
+
+/* 表 */
+table.info{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;}
+table.info th{background:var(--accent-soft);color:var(--navy);font-weight:700;text-align:left;padding:9px 10px;border:1px solid var(--accent-line);font-size:12.5px;}
+table.info td{padding:9px 10px;border:1px solid var(--grid);color:var(--ink-2);}
+table.info tr:nth-child(even) td{background:#fafbfd;}
+.table-scroll{overflow-x:auto;}
+
+/* シミュレーターCTA */
+.cta{
+  margin:26px 0;padding:22px;border-radius:14px;text-align:center;
+  background:linear-gradient(135deg,#ecf3fc,#e3edf9);border:1px solid var(--accent-line);
+}
+.cta .c-text{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;}
+.cta a.c-btn{
+  display:inline-block;padding:12px 30px;font-size:15px;font-weight:700;color:#fff;
+  background:linear-gradient(180deg,#2a6fc4,var(--accent));border-radius:11px;text-decoration:none;
+  box-shadow:0 4px 14px rgba(28,92,171,.32);letter-spacing:.04em;
+}
+.cta .c-sub{font-size:11.5px;color:var(--muted);margin-top:8px;}
+
+/* 関連記事 */
+.related{margin:26px 0 10px;}
+.related .r-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.related a{display:block;padding:12px 14px;border:1px solid var(--grid);border-radius:10px;
+  margin:8px 0;font-size:13.5px;font-weight:600;text-decoration:none;background:#fbfcfe;}
+.related a:hover{border-color:var(--accent-line);background:var(--accent-soft);}
+.related a span{display:block;font-size:11.5px;color:var(--muted);font-weight:400;margin-top:2px;}
+
+footer.site{margin-top:40px;background:var(--navy);padding:26px 0 30px;font-size:12px;color:#9daabd;}
+footer.site p{margin:4px 0;}
+footer.site a{color:#c9d5e8;}
