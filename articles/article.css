@@ -28,7 +28,7 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 a{color:var(--accent);}
-.wrap{max-width:780px;margin:0 auto;padding:0 18px;}
+.wrap{max-width:960px;margin:0 auto;padding:0 18px;}
 
 header.site{background:var(--surface);border-bottom:1px solid var(--grid);position:relative;}
 header.site::before{content:"";display:block;height:3px;
@@ -143,3 +143,25 @@ table.info tr:nth-child(even) td{background:#fafbfd;}
 footer.site{margin-top:40px;background:var(--navy);padding:26px 0 30px;font-size:12px;color:#9daabd;}
 footer.site p{margin:4px 0;}
 footer.site a{color:#c9d5e8;}
+
+/* ===== PC（広い画面）では余白と文字を一段大きく ===== */
+@media(min-width:720px){
+  article.card{padding:40px 48px;}
+  article h1{font-size:26px;}
+  .meta{font-size:12.5px;}
+  article .lead{font-size:15.5px;}
+  article h2{font-size:19.5px;margin:40px 0 14px;}
+  article h3{font-size:16.5px;}
+  article p,article li{font-size:15px;}
+  .toc{padding:18px 24px;}
+  .toc li{font-size:14.5px;}
+  .step{padding:18px 20px;}
+  .step .s-title{font-size:15.5px;}
+  .step p{font-size:14.5px;}
+  .point,.caution{font-size:14.5px;padding:15px 18px;}
+  table.info{font-size:14.5px;}
+  table.info th{font-size:13.5px;}
+  ul.checklist li{font-size:15px;}
+  .related a{font-size:14.5px;}
+  .related a span{font-size:12.5px;}
+}

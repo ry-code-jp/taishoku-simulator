@@ -35,7 +35,12 @@
     -webkit-font-smoothing:antialiased;
   }
   a{color:var(--accent);}
-  .wrap{max-width:780px;margin:0 auto;padding:0 18px;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 18px;}
+  @media(min-width:720px){
+    .card{padding:38px 46px;}
+    p,li{font-size:14.5px;}
+    h2{font-size:17.5px;}
+  }
   header.site{
     background:var(--surface);border-bottom:1px solid var(--grid);position:relative;
   }
