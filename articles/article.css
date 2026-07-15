@@ -50,24 +50,23 @@ article.card{
 
 article h1{font-size:23px;color:var(--navy);line-height:1.55;margin-bottom:10px;}
 .meta{font-size:12px;color:var(--muted);margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--grid);}
-article .lead{font-size:14.5px;color:var(--ink-2);}
+article .lead{font-size:15.5px;color:var(--ink-2);}
 article h2{
   font-size:18px;color:var(--navy);margin:36px 0 12px;
   padding:10px 14px;background:var(--accent-soft);border-left:4px solid var(--accent);
   border-radius:0 8px 8px 0;line-height:1.5;
 }
-article h3{font-size:15.5px;color:var(--navy);margin:24px 0 8px;padding-left:11px;border-left:3px solid var(--baseline);}
-article p{font-size:14px;color:var(--ink-2);margin:10px 0;}
+article h3{font-size:16px;color:var(--navy);margin:24px 0 8px;padding-left:11px;border-left:3px solid var(--baseline);}
+article p{font-size:15px;color:var(--ink-2);margin:10px 0;}
 article strong{color:var(--ink);}
 article ul,article ol{margin:10px 0 10px 24px;}
-article li{font-size:14px;color:var(--ink-2);margin:6px 0;}
+article li{font-size:15px;color:var(--ink-2);margin:6px 0;}
 
 /* 要点ボックス（結論ファースト・AI引用対応） */
 .keypoints{background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:12px;padding:16px 20px;margin:18px 0;}
 .keypoints .k-title{font-size:13px;font-weight:700;color:var(--accent-strong);margin-bottom:6px;}
 .keypoints ul{margin:0 0 0 20px;}
-.keypoints li{font-size:14px;color:var(--ink);margin:5px 0;font-weight:600;}
-@media(min-width:720px){.keypoints li{font-size:14.5px;}}
+.keypoints li{font-size:14.5px;color:var(--ink);margin:5px 0;font-weight:600;}
 
 /* 目次 */
 .toc{background:#f7f9fc;border:1px solid var(--grid);border-radius:12px;padding:16px 20px;margin:20px 0;}
@@ -154,21 +153,22 @@ footer.site a{color:#c9d5e8;}
 /* ===== PC（広い画面）では余白と文字を一段大きく ===== */
 @media(min-width:720px){
   article.card{padding:40px 48px;}
-  article h1{font-size:26px;}
-  .meta{font-size:12.5px;}
-  article .lead{font-size:15.5px;}
-  article h2{font-size:19.5px;margin:40px 0 14px;}
-  article h3{font-size:16.5px;}
-  article p,article li{font-size:15px;}
+  article h1{font-size:27px;}
+  .meta{font-size:13px;}
+  article .lead{font-size:16.5px;}
+  article h2{font-size:20.5px;margin:40px 0 14px;}
+  article h3{font-size:17px;}
+  article p,article li{font-size:16px;}
   .toc{padding:18px 24px;}
-  .toc li{font-size:14.5px;}
+  .toc li{font-size:15px;}
   .step{padding:18px 20px;}
-  .step .s-title{font-size:15.5px;}
-  .step p{font-size:14.5px;}
-  .point,.caution{font-size:14.5px;padding:15px 18px;}
-  table.info{font-size:14.5px;}
-  table.info th{font-size:13.5px;}
-  ul.checklist li{font-size:15px;}
-  .related a{font-size:14.5px;}
-  .related a span{font-size:12.5px;}
+  .step .s-title{font-size:16px;}
+  .step p{font-size:15px;}
+  .point,.caution{font-size:15px;padding:15px 18px;}
+  table.info{font-size:15px;}
+  table.info th{font-size:14px;}
+  ul.checklist li{font-size:16px;}
+  .related a{font-size:15px;}
+  .related a span{font-size:13px;}
+  .keypoints li{font-size:15.5px;}
 }
