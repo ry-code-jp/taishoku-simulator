@@ -16,5 +16,6 @@
 
 ## サイト情報
 
-- [プライバシーポリシー・免責事項・運営者情報](https://taishoku-sim.com/privacy.html)
+- [運営者情報・編集方針](https://taishoku-sim.com/about.html): サイトの目的、公的機関の一次資料に基づく編集方針、制度改定への対応方針
+- [プライバシーポリシー・免責事項](https://taishoku-sim.com/privacy.html)
 - 計算結果は概算であり、正確な金額はハローワーク・市区町村等の公的窓口での確認を案内している
