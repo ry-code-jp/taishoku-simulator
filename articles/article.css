@@ -100,7 +100,7 @@ ul.checklist li{
   border:1px solid var(--grid);border-radius:10px;background:#fbfcfe;
 }
 ul.checklist li::before{
-  content:"✓";position:absolute;left:11px;top:10px;
+  content:"✓";position:absolute;left:11px;top:50%;transform:translateY(-50%);
   width:19px;height:19px;border-radius:50%;
   background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line);
   font-size:11px;line-height:18px;text-align:center;font-weight:700;
