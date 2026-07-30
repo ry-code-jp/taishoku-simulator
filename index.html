@@ -1014,9 +1014,19 @@ document.querySelectorAll("#reasonGroup label").forEach(l => {
 document.querySelectorAll("#form input[type=number], #form select").forEach(el => {
   el.addEventListener("input", () => { if ($("results").style.display === "block") render(); });
 });
+/* 計測イベント（GA4）。入力値は一切送信せず、操作の有無だけを記録する */
+function ev(name, params) {
+  if (typeof gtag === "function") gtag("event", name, params || {});
+}
 $("calcBtn").addEventListener("click", () => {
   render();
+  ev("calculate", { tool: "taishoku-sim" });
   $("results").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+document.querySelectorAll(".share-btn").forEach(b => {
+  b.addEventListener("click", () => {
+    ev("share_click", { method: b.classList.contains("x") ? "x" : b.classList.contains("line") ? "line" : "copy" });
+  });
 });
 $("copyUrlBtn").addEventListener("click", () => {
   navigator.clipboard.writeText("https://taishoku-sim.com/").then(() => {
