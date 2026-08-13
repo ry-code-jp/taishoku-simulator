@@ -316,6 +316,11 @@
   table.quick td:first-child{font-weight:700;color:var(--ink);background:#fafbfd;}
   .quick-note{font-size:12.5px;color:var(--muted);margin-top:8px;}
   .quick-wrap{overflow-x:auto;}
+  /* 数値が折り返さないよう最小幅を確保し、狭い画面では横スクロールさせる */
+  table.quick.wide{min-width:560px;}
+  table.quick.wide th,table.quick.wide td{white-space:nowrap;}
+  .scroll-hint{display:none;font-size:11.5px;color:var(--muted);margin-top:5px;}
+  @media(max-width:620px){.scroll-hint{display:block;}}
 
   /* ===== コラム ===== */
   .article-more{display:block;text-align:center;font-size:14px;font-weight:700;margin-top:12px;text-decoration:none;}
@@ -556,6 +561,48 @@
       </table>
     </div>
     <p class="quick-note">日数だけでなく「1日あたりいくらか」「いつから振り込まれるか」は上のシミュレーターで計算できます。</p>
+  </section>
+
+  <section class="card">
+    <h2>月収別の支給額データ（当サイト試算）</h2>
+    <p class="sub">公的機関が公表しているのは「日額の上限額」と「給付日数の表」までです。「自分の月収なら実際いくらになるのか」は、そこから自分で計算しないとわかりません。以下は上のシミュレーターと同じ計算式（令和8年8月1日改定）で条件を変えて試算した結果で、入力せずに目安をつかめます。</p>
+
+    <h3 style="font-size:15px;color:var(--navy);margin:8px 0 4px;">① 月収と年齢でみる基本手当日額</h3>
+    <div class="quick-wrap">
+      <table class="quick wide">
+        <tr><th>退職前の月収</th><th>29歳以下</th><th>30〜44歳</th><th>45〜59歳</th><th>60〜64歳</th></tr>
+        <tr><td>15万円</td><td>4,000円<br><span style="font-size:12px;color:var(--muted);">月12.0万</span></td><td>4,000円<br><span style="font-size:12px;color:var(--muted);">月12.0万</span></td><td>4,000円<br><span style="font-size:12px;color:var(--muted);">月12.0万</span></td><td>4,000円<br><span style="font-size:12px;color:var(--muted);">月12.0万</span></td></tr>
+        <tr><td>20万円</td><td>5,037円<br><span style="font-size:12px;color:var(--muted);">月15.1万</span></td><td>5,037円<br><span style="font-size:12px;color:var(--muted);">月15.1万</span></td><td>5,037円<br><span style="font-size:12px;color:var(--muted);">月15.1万</span></td><td>4,916円<br><span style="font-size:12px;color:var(--muted);">月14.7万</span></td></tr>
+        <tr><td>25万円</td><td>5,776円<br><span style="font-size:12px;color:var(--muted);">月17.3万</span></td><td>5,776円<br><span style="font-size:12px;color:var(--muted);">月17.3万</span></td><td>5,776円<br><span style="font-size:12px;color:var(--muted);">月17.3万</span></td><td>5,264円<br><span style="font-size:12px;color:var(--muted);">月15.8万</span></td></tr>
+        <tr><td>30万円</td><td>6,307円<br><span style="font-size:12px;color:var(--muted);">月18.9万</span></td><td>6,307円<br><span style="font-size:12px;color:var(--muted);">月18.9万</span></td><td>6,307円<br><span style="font-size:12px;color:var(--muted);">月18.9万</span></td><td>5,348円<br><span style="font-size:12px;color:var(--muted);">月16.0万</span></td></tr>
+        <tr><td>35万円</td><td>6,630円<br><span style="font-size:12px;color:var(--muted);">月19.9万</span></td><td>6,630円<br><span style="font-size:12px;color:var(--muted);">月19.9万</span></td><td>6,630円<br><span style="font-size:12px;color:var(--muted);">月19.9万</span></td><td>5,431円<br><span style="font-size:12px;color:var(--muted);">月16.3万</span></td></tr>
+        <tr><td>40万円</td><td>6,744円<br><span style="font-size:12px;color:var(--muted);">月20.2万</span></td><td>6,744円<br><span style="font-size:12px;color:var(--muted);">月20.2万</span></td><td>6,744円<br><span style="font-size:12px;color:var(--muted);">月20.2万</span></td><td>6,000円<br><span style="font-size:12px;color:var(--muted);">月18.0万</span></td></tr>
+        <tr><td>50万円</td><td>7,450円<br><span style="font-size:12px;color:var(--muted);">月22.4万（上限）</span></td><td>8,270円<br><span style="font-size:12px;color:var(--muted);">月24.8万（上限）</span></td><td>8,333円<br><span style="font-size:12px;color:var(--muted);">月25.0万</span></td><td>7,500円<br><span style="font-size:12px;color:var(--muted);">月22.5万</span></td></tr>
+      </table>
+    </div>
+    <p class="scroll-hint">← 表は横にスクロールできます</p>
+    <p class="quick-note">月収＝退職前6ヶ月の平均（額面・賞与除く・残業代込み）。カッコ内は30日分に換算した月あたりの目安です。</p>
+    <div class="goodnote" style="margin-top:12px;">
+      <strong>この数字が示していること：</strong>月収が10万円増えても、日額はほとんど増えません。月収30万円と40万円の差は日額でわずか437円（月約1.3万円）です。給付率は収入が高い人ほど下げられる仕組みなので、<strong>在職時の月収に対してカバーされる割合は、月収15万円なら約80%、30万円で約63%、40万円では約51%まで落ちます</strong>。収入が高かった人ほど「思っていたより少ない」と感じるのは、この逓減と上限額が理由です。
+    </div>
+
+    <h3 style="font-size:15px;color:var(--navy);margin:22px 0 4px;">② 退職理由だけで総額はどれだけ変わるか</h3>
+    <p style="font-size:13.5px;color:var(--ink-2);margin:4px 0 8px;">月収30万円・雇用保険の加入10年という同じ条件で、離職理由だけを変えて試算した比較です。</p>
+    <div class="quick-wrap">
+      <table class="quick wide">
+        <tr><th>年齢</th><th>自己都合</th><th>会社都合</th><th>差額</th></tr>
+        <tr><td>29歳以下</td><td>120日 / 76万円</td><td>180日 / 114万円</td><td>+38万円<br><span style="font-size:12px;color:var(--muted);">1.50倍</span></td></tr>
+        <tr><td>30〜44歳</td><td>120日 / 76万円</td><td>240日 / 151万円</td><td>+76万円<br><span style="font-size:12px;color:var(--muted);">2.00倍</span></td></tr>
+        <tr><td>45〜59歳</td><td>120日 / 76万円</td><td>270日 / 170万円</td><td>+95万円<br><span style="font-size:12px;color:var(--muted);">2.25倍</span></td></tr>
+        <tr><td>60〜64歳</td><td>120日 / 64万円</td><td>210日 / 112万円</td><td>+48万円<br><span style="font-size:12px;color:var(--muted);">1.75倍</span></td></tr>
+      </table>
+    </div>
+    <p class="scroll-hint">← 表は横にスクロールできます</p>
+    <p class="quick-note">60〜64歳は給付率の計算式が異なるため、同じ月収でも日額が下がります（5,348円）。</p>
+    <div class="alert" style="margin-top:12px;">
+      <strong>45〜59歳では総額が95万円変わります。</strong>同じ会社を同じ月収・同じ勤続年数で辞めても、離職票に書かれた理由がどちらになるかだけで、受け取れる金額が2倍前後違うということです。長時間残業・賃金未払い・ハラスメント・退職勧奨などの事情があれば「特定受給資格者（会社都合相当）」と認定される可能性があるため、<strong>離職理由に納得できない場合は、証拠を持ってハローワークの窓口で相談する価値が金額面でも大きい</strong>といえます。
+    </div>
+    <p class="quick-note" style="margin-top:14px;">※いずれも当サイトが厚生労働省公表の計算式（令和8年8月1日改定）に基づいて試算した概算です。1円単位の金額は個々の賃金台帳で確定するため、正確な額はハローワークでご確認ください。あなた自身の条件での試算は<a href="#" onclick="document.querySelector('.hero-band').scrollIntoView({behavior:'smooth'});return false;">ページ上部のシミュレーター</a>から行えます。</p>
   </section>
 
   <section class="card">
