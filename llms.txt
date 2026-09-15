@@ -17,7 +17,7 @@
 
 ## 解説記事
 
-- [失業手当のもらい方を5ステップで解説](https://taishoku-sim.com/articles/shitsugyou-teate-moraikata.html): 申請手順・必要書類・給付制限1ヶ月ルール（2025年4月改正）
+- [失業手当のもらい方を5ステップで解説](https://taishoku-sim.com/articles/shitsugyou-teate-moraikata.html): 申請手順・必要書類・給付制限の分岐表（1ヶ月／3ヶ月／教育訓練による解除）・当サイト試算による年齢別6パターンの支給額
 - [退職前にやることチェックリスト（お金編）](https://taishoku-sim.com/articles/taishoku-mae-checklist.html): 退職月の選び方・住民税一括徴収・任意継続の期限
 - [退職後の住民税・国保・年金の手続きガイド](https://taishoku-sim.com/articles/taishoku-go-tetsuduki.html): 14日以内の手続き・減免制度
 - [退職金にかかる税金｜退職所得控除の計算方法](https://taishoku-sim.com/articles/taishokukin-zeikin.html): 分離課税・退職所得控除・申告書の注意点
