@@ -28,9 +28,11 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 a{color:var(--accent);}
-/* 日本語を文節単位で改行し、行末に1〜2文字だけ残る折り返しを防ぐ（対応ブラウザのみ有効・非対応でも従来どおり表示） */
-body{word-break:auto-phrase;overflow-wrap:break-word;}
-table{word-break:normal;}
+/* 改行の調整（対応ブラウザのみ有効・非対応でも従来どおり表示）
+   見出し・要点・日付など短い文は文節単位で改行して語の途中で切れないようにし、
+   長い本文は文字単位のまま（右端をそろえる）、最終行に1〜2文字だけ残る折り返しだけを防ぐ */
+body{overflow-wrap:break-word;}
+h1,h2,h3,.keypoints li,.breadcrumb,.meta,.toc,.related a,.cta,table th{word-break:auto-phrase;}
 h1,h2,h3{text-wrap:balance;}
 p,li{text-wrap:pretty;}
 .wrap{max-width:960px;margin:0 auto;padding:0 18px;}
