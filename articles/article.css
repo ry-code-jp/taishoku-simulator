@@ -4,7 +4,7 @@
   --surface:#ffffff;
   --ink:#1b2433;
   --ink-2:#4a5568;
-  --muted:#8a94a6;
+  --muted:#677184;
   --grid:#e5e9f0;
   --baseline:#c6cedb;
   --border:rgba(27,36,51,0.08);
@@ -28,6 +28,11 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 a{color:var(--accent);}
+/* 日本語を文節単位で改行し、行末に1〜2文字だけ残る折り返しを防ぐ（対応ブラウザのみ有効・非対応でも従来どおり表示） */
+body{word-break:auto-phrase;overflow-wrap:break-word;}
+table{word-break:normal;}
+h1,h2,h3{text-wrap:balance;}
+p,li{text-wrap:pretty;}
 .wrap{max-width:960px;margin:0 auto;padding:0 18px;}
 
 header.site{background:var(--surface);border-bottom:1px solid var(--grid);position:relative;}

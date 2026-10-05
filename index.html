@@ -65,7 +65,7 @@
     --surface:#ffffff;
     --ink:#1b2433;
     --ink-2:#4a5568;
-    --muted:#8a94a6;
+    --muted:#677184;
     --grid:#e5e9f0;
     --baseline:#c6cedb;
     --border:rgba(27,36,51,0.08);
@@ -92,6 +92,11 @@
     -webkit-font-smoothing:antialiased;
   }
   a{color:var(--accent);}
+  /* 日本語を文節単位で改行し、行末に1〜2文字だけ残る折り返しを防ぐ（対応ブラウザのみ有効・非対応でも従来どおり表示） */
+  body{word-break:auto-phrase;overflow-wrap:break-word;}
+  table{word-break:normal;}
+  h1,h2,h3,summary,.a-title{text-wrap:balance;}
+  p,li,.a,.sub,.alert,.goodnote,.a-desc{text-wrap:pretty;}
   .wrap{max-width:960px;margin:0 auto;padding:0 18px;}
 
   /* ===== ヘッダー ===== */
@@ -290,7 +295,7 @@
   .tips li{margin:10px 0;font-size:15px;list-style:none;padding-left:30px;position:relative;color:var(--ink-2);}
   .tips li strong{color:var(--ink);}
   .tips li::before{
-    content:"✓";position:absolute;left:0;top:2px;
+    content:"✓";position:absolute;left:0;top:3.5px;
     width:19px;height:19px;border-radius:50%;
     background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line);
     font-size:11px;line-height:18px;text-align:center;font-weight:700;
@@ -343,7 +348,7 @@
   }
   .faq summary::-webkit-details-marker{display:none;}
   .faq summary::before{
-    content:"Q";position:absolute;left:0;top:12px;
+    content:"Q";position:absolute;left:0;top:15px;
     width:21px;height:21px;border-radius:6px;background:var(--accent-soft);color:var(--accent);
     border:1px solid var(--accent-line);
     font-size:12px;line-height:20px;text-align:center;font-weight:700;
@@ -387,6 +392,30 @@
     .stat .v small{font-size:11px;}
     .btn{font-size:16px;}
   }
+  /* ページ内ナビ */
+  .page-nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:26px 0 4px;padding:14px 18px;
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-card);}
+  .page-nav .pn-label{font-size:12.5px;font-weight:700;color:var(--muted);margin-right:4px;}
+  .page-nav a{font-size:13.5px;font-weight:700;color:var(--accent);text-decoration:none;
+    padding:6px 12px;border-radius:999px;background:var(--accent-soft);border:1px solid var(--accent-line);}
+  .page-nav a:hover{background:#dde9f9;}
+  section.card[id]{scroll-margin-top:16px;}
+  /* スマホ追従ボタン（スマホ以外では常に非表示） */
+  .sticky-cta{display:none;}
+  @media(max-width:560px){
+    .sticky-cta.show{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;
+      padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+      background:rgba(244,246,250,.95);border-top:1px solid var(--grid);
+      box-shadow:0 -6px 20px rgba(22,35,58,.08);}
+    .sticky-cta .btn{margin-top:0;padding:13px;}
+    .hero{padding:22px 0 20px;}
+    .hero p.lead{margin-top:8px;}
+    .hero .badges{margin-top:12px;}
+    .badge-sub{display:none;}
+    .share-row .s-label{flex-basis:100%;}
+    .page-nav{padding:12px 14px;}
+    .page-nav .pn-label{flex-basis:100%;}
+  }
   @media(max-width:374px){
     .stat-grid{grid-template-columns:1fr;}
     .logo-text .logo-sub{font-size:10px;}
@@ -416,10 +445,10 @@
       <h1>退職したら、お金はどうなる？<br><span class="accent-line">失業手当と請求額</span>をまとめてシミュレーション</h1>
       <p class="lead">「失業手当はいくら・いつから？」「住民税と国保の請求は？」「貯金は何ヶ月もつ？」——退職前に知っておきたいお金の全体像を、7つの質問に答えるだけで無料で計算します。</p>
       <div class="badges">
-        <span class="badge">2026年最新制度対応</span>
+        <span class="badge badge-sub">2026年最新制度対応</span>
         <span class="badge">厚労省の公式計算式を使用</span>
         <span class="badge">登録不要・無料</span>
-        <span class="badge">入力データは保存されません</span>
+        <span class="badge badge-sub">入力データは保存されません</span>
       </div>
     </section>
   </div>
@@ -429,7 +458,7 @@
 
   <section class="card">
     <h2><span class="num">1</span>あなたの状況を入力</h2>
-    <p class="sub">すべて概算でOK。あとから何度でも変えられます。<span style="display:block;margin-top:2px;">最終更新：2026年8月3日（令和8年8月改定の基本手当日額・令和8年度の国民年金保険料に対応）</span></p>
+    <p class="sub">すべて概算でOK。あとから何度でも変えられます。<span style="display:block;margin-top:2px;">計算の基準：令和8年8月改定の基本手当日額／令和8年度の国民年金保険料／令和6年度以降の住民税均等割（最終更新 2026年10月5日）</span></p>
     <form id="form" onsubmit="return false;">
       <div class="grid">
         <div class="field">
@@ -527,7 +556,7 @@
           <li>基本手当日額：令和8年8月1日改定の厚生労働省公表値（年齢別上限 29歳以下7,450円／30〜44歳8,270円／45〜59歳9,110円／60〜64歳7,830円、下限2,562円）と公式の給付率計算式を使用。</li>
           <li>給付制限：2025年4月1日以降の離職から、自己都合退職は原則1ヶ月（5年以内に3回以上の自己都合退職は3ヶ月）。</li>
           <li>国民年金保険料：令和8年度（2026年4月〜2027年3月）の月額17,920円。</li>
-          <li>住民税：前年所得に税率10%＋均等割・森林環境税で概算（単身の場合）。</li>
+          <li>住民税：前年所得に税率10%＋均等割4,000円＋森林環境税1,000円で概算（単身・標準税率の場合。令和5年度までは復興特別分が加算されていたため、合計は1,000円多い6,000円でした）。</li>
           <li>国民健康保険：全国の平均的な料率による概算（単身の場合）。実際の保険料は市区町村によって大きく異なります。会社都合等の場合は非自発的失業者の軽減（前年給与所得を30%として計算）を適用。</li>
           <li>シミュレーションは1ヶ月=30日として計算し、失業手当の振込は実際の認定日サイクルを踏まえ約1ヶ月遅れで反映しています。</li>
         </ul>
@@ -538,7 +567,15 @@
 
   </div>
 
-  <section class="card">
+  <nav class="page-nav" aria-label="このページの内容">
+    <span class="pn-label">このページで確認できること</span>
+    <a href="#hayamihyou">給付日数の早見表</a>
+    <a href="#data">月収別の支給額データ</a>
+    <a href="#column">退職とお金のコラム</a>
+    <a href="#faq">よくある質問</a>
+  </nav>
+
+  <section class="card" id="hayamihyou">
     <h2>失業手当の給付日数 早見表</h2>
     <p class="sub">もらえる日数は「退職理由 × 年齢 × 雇用保険の加入期間」で決まります（2026年8月時点）。</p>
     <h3 style="font-size:14px;color:var(--navy);margin:6px 0 4px;">自己都合退職の場合（全年齢共通）</h3>
@@ -563,7 +600,7 @@
     <p class="quick-note">日数だけでなく「1日あたりいくらか」「いつから振り込まれるか」は上のシミュレーターで計算できます。</p>
   </section>
 
-  <section class="card">
+  <section class="card" id="data">
     <h2>月収別の支給額データ（当サイト試算）</h2>
     <p class="sub">公的機関が公表しているのは「日額の上限額」と「給付日数の表」までです。「自分の月収なら実際いくらになるのか」は、そこから自分で計算しないとわかりません。以下は上のシミュレーターと同じ計算式（令和8年8月1日改定）で条件を変えて試算した結果で、入力せずに目安をつかめます。</p>
 
@@ -605,7 +642,7 @@
     <p class="quick-note" style="margin-top:14px;">※いずれも当サイトが厚生労働省公表の計算式（令和8年8月1日改定）に基づいて試算した概算です。1円単位の金額は個々の賃金台帳で確定するため、正確な額はハローワークでご確認ください。あなた自身の条件での試算は<a href="#" onclick="document.querySelector('.hero-band').scrollIntoView({behavior:'smooth'});return false;">ページ上部のシミュレーター</a>から行えます。</p>
   </section>
 
-  <section class="card">
+  <section class="card" id="column">
     <h2>退職とお金のコラム</h2>
     <p class="sub">シミュレーションの前後に読んでおきたい、退職のお金の基礎知識です。</p>
     <div class="article-list">
@@ -640,7 +677,7 @@
     </div>
   </section>
 
-  <section class="card faq">
+  <section class="card faq" id="faq">
     <h2>よくある質問</h2>
     <details>
       <summary>失業手当はいつからもらえますか？</summary>
@@ -688,7 +725,7 @@
     <p>退職後のお金の不安を、数字に変える。</p>
     <p>制度データ：厚生労働省（令和8年8月1日改定 基本手当日額）／日本年金機構（令和8年度 国民年金保険料）ほか</p>
     <p><a href="./articles/" style="color:#c9d5e8;">コラム一覧</a> ｜ <a href="https://fukugyou-sim.com/" target="_blank" rel="noopener" style="color:#c9d5e8;">副業の税金シミュレーター</a> ｜ <a href="./about.html" style="color:#c9d5e8;">運営者情報・編集方針</a> ｜ <a href="./privacy.html" style="color:#c9d5e8;">プライバシーポリシー・免責事項</a> ｜ <a href="https://forms.gle/fLUeUgyRsNNLhdzbA" target="_blank" rel="noopener" style="color:#c9d5e8;">お問い合わせ</a></p>
-    <p>最終更新：2026年8月3日</p>
+    <p>最終更新：2026年10月5日</p>
   </div>
 </footer>
 
@@ -709,7 +746,7 @@ const C = {
   ],
   pensionMonthly: 17920,      // 令和8年度 国民年金保険料
   residentTaxRate: 0.10,
-  residentTaxFlat: 6000,      // 均等割5,000円＋森林環境税1,000円
+  residentTaxFlat: 5000,      // 均等割4,000円＋森林環境税1,000円（令和6年度〜。復興特別分1,000円は令和5年度で終了）
   residentTaxAdj: 2500,       // 調整控除
   socialInsRate: 0.145,       // 在職時の社会保険料率（控除概算用）
   nhi: {                      // 国民健康保険（全国平均的な概算モデル・単身）
@@ -1076,6 +1113,35 @@ $("copyUrlBtn").addEventListener("click", () => {
     setTimeout(() => { $("copyUrlBtn").textContent = "🔗 URLをコピー"; }, 1800);
   });
 });
+</script>
+<div class="sticky-cta" id="stickyCta" aria-hidden="true">
+  <button type="button" class="btn" id="stickyCalcBtn">結果を見る</button>
+</div>
+<script>
+/* スマホで入力欄を見ている間だけ、画面下に「結果を見る」を出す。
+   本物のボタンが見えたら隠し、一度結果を出したら以後は出さない。
+   位置はスクロールのたびに実測する（IntersectionObserverに依存しない）。 */
+(function(){
+  const sticky=document.getElementById("stickyCta"), real=document.getElementById("calcBtn"),
+        form=document.getElementById("form"), results=document.getElementById("results");
+  if(!sticky||!real||!form) return;
+  let used=false;
+  const isMobile=()=>window.matchMedia("(max-width:560px)").matches;
+  function update(){
+    const vh=window.innerHeight, f=form.getBoundingClientRect(), b=real.getBoundingClientRect();
+    const formVisible=f.bottom>0 && f.top<vh;
+    const realVisible=b.top<vh && b.bottom>0;   // 本物のボタンが少しでも見えたら隠す
+    const on=isMobile() && !used && results.style.display!=="block" && formVisible && !realVisible;
+    sticky.classList.toggle("show",on);
+    sticky.setAttribute("aria-hidden",on?"false":"true");
+  }
+  // 要素2つの位置を測るだけなので、スクロールごとに直接判定しても負荷は無視できる
+  window.addEventListener("scroll",update,{passive:true});
+  window.addEventListener("resize",update);
+  document.getElementById("stickyCalcBtn").addEventListener("click",()=>{used=true;update();real.click();});
+  real.addEventListener("click",()=>{used=true;update();});
+  update();
+})();
 </script>
 </body>
 </html>
